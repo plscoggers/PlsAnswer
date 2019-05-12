@@ -7,7 +7,10 @@ def run(**kwargs):
     while(True):
         for key,value in kwargs.items():
             if key not in (p.name() for p in psutil.process_iter()):
-                subprocess.call(value)
+                try:
+                    subprocess.call(value)
+                except:
+                    print("Something wrong with process {}, pls check it out".format(key))
                 
 def createDict(processes, locations):
     thisDict = {}
@@ -24,4 +27,6 @@ if __name__ == '__main__':
     if(len(args.processes) == len(args.locations)):
         kwargs = createDict(args.processes, args.locations)
         run(**kwargs)
+    else:
+        print("Something done went wrong, pls check your inputs")
         
