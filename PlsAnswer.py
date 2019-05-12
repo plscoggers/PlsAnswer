@@ -21,8 +21,8 @@ def createDict(processes, locations):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--processes_name',dest='processes',required=True,nargs="+",type=str,help='A tuple of process names')
-    parser.add_argument('--processes_location',dest='locations',required=True,nargs="+",type=str,help='A tuple of the location of the .exes')
+    parser.add_argument('--processes_name',dest='processes',required=True,nargs="+",type=str,help='A list of process names')
+    parser.add_argument('--processes_location',dest='locations',required=True,nargs="+",type=str,help='A list of the location of the .exes')
     args = parser.parse_args()
     if(len(args.processes) == len(args.locations)):
         kwargs = createDict(args.processes, args.locations)
